@@ -1,36 +1,48 @@
 <template>
-  <div class="app-container">
-    <aside>
-      The guide page is useful for some people who entered the project for the first time. You can briefly introduce the
-      features of the project. Demo is based on
-      <a href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
-    </aside>
-    <el-button icon="el-icon-question" type="primary" @click.prevent.stop="guide">
-      Show Guide
-    </el-button>
-  </div>
+  <el-form
+    :model="ruleForm"
+    :rules="rules"
+    ref="ruleForm"
+    label-width="100px"
+    class="demo-ruleForm"
+  >
+    <el-form-item label="活动名称" prop="name">
+      <el-input v-model="ruleForm.name"></el-input>
+    </el-form-item>
+    <el-form-item label="活动名称" prop="name">
+      <el-date-picker v-model="ruleForm.name"></el-date-picker>
+    </el-form-item>
+    <el-form-item v-for="(ele,index) in fromArr" :key="index">
+    
+      {{`<${ele.type}></${ele.type}>`}}
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
-import Driver from 'driver.js' // import driver.js
-import 'driver.js/dist/driver.min.css' // import driver.js css
-import steps from './steps'
-
+import fromArr from './from'
 export default {
-  name: 'Guide',
   data() {
     return {
-      driver: null
-    }
-  },
-  mounted() {
-    this.driver = new Driver()
+      ruleForm: {
+        name: ""
+      }
+    };
   },
   methods: {
-    guide() {
-      this.driver.defineSteps(steps)
-      this.driver.start()
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     }
   }
-}
+};
 </script>
