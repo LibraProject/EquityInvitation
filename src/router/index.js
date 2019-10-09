@@ -107,7 +107,8 @@ export const constantRoutes = [
         meta: { title: 'Guide', icon: 'guide', noCache: true }
       }
     ]
-  },{
+  },
+  {
     path: '/my-equity-invitation',
     component: Layout,
     redirect: '/my-equity-invitation/index',
@@ -115,8 +116,8 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/my-equity-invitation'),
-        name: 'my-equity-invitation',
-        meta: { title: 'my-equity-invitation', icon: 'guide', noCache: true }
+        name: 'EquityInvitation',
+        meta: { title: 'EquityInvitation', icon: 'excel', noCache: true }
       }
     ]
   },
