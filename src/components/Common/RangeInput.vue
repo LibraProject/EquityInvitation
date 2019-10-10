@@ -11,3 +11,5 @@ export default {
   props: ['range']
 }
 </script>
+
+

@@ -137,6 +137,7 @@ export default {
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, .5);
+    z-index: 10;
 }
 .mask{
     width: 600px;
